@@ -18,7 +18,7 @@ export default function SearchPage() {
   };
 
   return (
-    <div className="py-20 px-7 grid grid-cols-3 divide-x">
+    <div className="pt-20 px-20 grid grid-cols-3 divide-x">
       <button className="rounded-l-2xl focus:border-gray-600 focus:rounded-2xl hover:border border shadow flex flex-col text-left text-xs px-6 py-3 font-normal focus:font-bold" onClick={handleCityClick}>
         <p className="text-small-xs">LOCATION</p>
         Helsinki, Finland
