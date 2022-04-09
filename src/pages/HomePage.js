@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
+import { citys, Rooms } from "../API/Rooms";
 import Card from "../components/Card";
 
 export default function HomePage() {
   const [location, setLocation] = useState([]);
 
   useEffect(() => {
-    fetch('stays.json')
-      .then(res => res.json())
-      .then(data => {
-        setLocation(data);
-        console.log(data);
-      })
+    Rooms().then(data => {
+      setLocation(data);
+    });
   }, []);
 
+  console.log(citys(location));
 
   return (
     <div className='px-16 '>
@@ -23,8 +22,8 @@ export default function HomePage() {
       <div className="grid grid-cols-3 gap-2">
         {
           location.map((data) => {
-            return <div>
-              <Card key={data.photo} children={data} />
+            return <div key={data.photo}>
+              <Card children={data} />
             </div>
           })
         }
