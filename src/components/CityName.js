@@ -1,32 +1,20 @@
-import React from 'react'
+import { useRoom } from '../context/roomContext'
 
 export default function CityName() {
+  const { citys, setSelectCity, setIsClicked } = useRoom()
+
   return (
     <div className='pt-9 pb-14'>
-      <div className='px-5 pb-7 flex self-center'>
-        <span className="material-icons mr-1">
-          room
-        </span>
-        <span className='text-sm'>Helsinki, Finland</span>
-      </div>
-      <div className='px-5 pb-7 flex self-center'>
-        <span className="material-icons mr-1">
-          room
-        </span>
-        <span className='text-sm'>Helsinki, Finland</span>
-      </div>
-      <div className='px-5 pb-7 flex self-center'>
-        <span className="material-icons mr-1">
-          room
-        </span>
-        <span className='text-sm'>Helsinki, Finland</span>
-      </div>
-      <div className='px-5 pb-7 flex self-center'>
-        <span className="material-icons mr-1">
-          room
-        </span>
-        <span className='text-sm'>Helsinki, Finland</span>
-      </div>
+      {
+        citys().map((data) => {
+          return <div className='px-5 pb-7 flex self-center cursor-default' key={data}>
+            <span className="material-icons mr-1">
+              room
+            </span>
+            <span className='text-sm cursor-pointer' onClick={() => { setSelectCity(data); setIsClicked(true) }}>{data}</span>
+          </div>
+        })
+      }
     </div>
   )
 }

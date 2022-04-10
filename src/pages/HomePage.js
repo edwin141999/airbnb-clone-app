@@ -1,23 +1,21 @@
-import { useEffect, useState } from "react";
-import { citys, Rooms } from "../API/Rooms";
 import Card from "../components/Card";
+import { useRoom } from "../context/roomContext";
 
 export default function HomePage() {
-  const [location, setLocation] = useState([]);
 
-  useEffect(() => {
-    Rooms().then(data => {
-      setLocation(data);
-    });
-  }, []);
+  const { location, setOnPressed, setOnPressedCity, setOnPressedGuests } = useRoom();
 
-  console.log(citys(location));
+  const handleClick = () => {
+    setOnPressed(false)
+    setOnPressedCity(false)
+    setOnPressedGuests(false)
+  }
 
   return (
-    <div className='px-16 '>
+    <div className='px-16 ' onClick={handleClick}>
       <div className="flex justify-between">
         <span className="text-2xl font-bold">Stays in Finland</span>
-        <span className="xl:mr-6 text-sm self-center">12+ stays</span>
+        <span className="xl:mr-6 text-sm self-center">{location.length} stays</span>
       </div>
       <div className="grid grid-cols-3 gap-2">
         {

@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useRoom } from "../context/roomContext";
 import SearchPage from '../pages/SearchPage'
 
 export default function Navbar() {
+  const { setOnPressedCity, setOnPressedGuests, onPressed, setOnPressed, isClicked, selectCity, totalGuests } = useRoom()
 
-  const [onPressed, setOnPressed] = useState(false);
-
-  const handleClick = () => {
+  const handleClickCity = () => {
     setOnPressed(true)
+    setOnPressedCity(true)
+  }
+
+  const handleClickGuest = () => {
+    setOnPressed(true)
+    setOnPressedGuests(true)
   }
 
   return (
@@ -23,8 +28,23 @@ export default function Navbar() {
       <div className='py-10 flex justify-between items-center px-16'>
         <img src="logo.png" alt="Logo" className='h-full' />
         <div className='rounded-2xl shadow-md py-3 flex divide-x xl:mr-6'>
-          <button className='px-3 text-xs self-center font-normal' onClick={handleClick}>Helsinki, Finland</button>
-          <button className='px-3 text-xs font-medium text-gray-500'>Add guests</button>
+          <button className='px-3 text-xs self-center font-normal' onClick={handleClickCity}>
+            {
+              isClicked ? (
+                <p>{selectCity}</p>
+              ) :
+                <p className="font-medium text-gray-500">Add location</p>
+            }
+
+          </button>
+          <button className='px-3 text-xs' onClick={handleClickGuest}>
+            {
+              isClicked ? (
+                <p className="font-normal">{totalGuests} guests</p>
+              ) :
+                <p className="font-medium text-gray-500">Add guests</p>
+            }
+          </button>
           <span className="material-icons text-orange-500 px-3">
             <button className='font-normal'>
               search

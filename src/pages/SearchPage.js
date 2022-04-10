@@ -1,11 +1,10 @@
-import { useState } from "react";
 import CityName from "../components/CityName";
 import Guests from "../components/Guests";
+import { useRoom } from "../context/roomContext";
 
 export default function SearchPage() {
 
-  const [onPressedCity, setOnPressedCity] = useState(false);
-  const [onPressedGuests, setOnPressedGuests] = useState(false);
+  const { onPressedCity, setOnPressedCity, onPressedGuests, setOnPressedGuests, isClicked, selectCity, totalGuests } = useRoom()
 
   const handleCityClick = () => {
     setOnPressedCity(true);
@@ -19,13 +18,17 @@ export default function SearchPage() {
 
   return (
     <div className="pt-20 px-20 grid grid-cols-3 divide-x">
-      <button className="rounded-l-2xl focus:border-gray-600 focus:rounded-2xl hover:border border shadow flex flex-col text-left text-xs px-6 py-3 font-normal focus:font-bold" onClick={handleCityClick}>
+      <button className={`rounded-l-2xl hover:border border shadow flex flex-col text-left text-xs px-6 py-3 ${onPressedCity ? 'font-bold border-gray-600 rounded-2xl' : 'font-normal'} `} onClick={handleCityClick}>
         <p className="text-small-xs">LOCATION</p>
-        Helsinki, Finland
+        {
+          isClicked ? selectCity : 'Add location'
+        }
       </button>
-      <button className="focus:border-gray-600 focus:rounded-2xl border shadow flex flex-col text-left text-xs px-4 py-3 font-normal focus:font-bold" onClick={handleGuestsClick}>
+      <button className={`border shadow flex flex-col text-left text-xs px-4 py-3 ${onPressedGuests ? 'border-gray-600 rounded-2xl font-bold' : 'font-normal'}`} onClick={handleGuestsClick}>
         <p className="text-small-xs">GUESTS</p>
-        4 guests
+        {
+          isClicked ? totalGuests + ' guests' : 'Add guests'
+        }
       </button>
       <div className="rounded-r-2xl shadow flex justify-center items-center ">
         <button className="bg-orange-500 text-white px-6 py-3 rounded-2xl text-sm font-normal flex items-center">
