@@ -1,13 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRoom } from "../context/roomContext";
 
 export default function Guests() {
-
-  const [totalAdults, setTotalAdults] = useState(0);
-  const [totalChildren, setTotalChildren] = useState(0);
-  const { setTotalGuests, isClicked, maxGuests } = useRoom()
-
-  // console.log(maxGuests());
+  const { setTotalGuests, isClicked, totalAdults, setTotalAdults, totalChildren, setTotalChildren } = useRoom()
 
   const handleCLickAddAdult = () => {
     if (isClicked) setTotalAdults(totalAdults + 1);
@@ -28,7 +23,6 @@ export default function Guests() {
   useEffect(() => {
     const total = totalAdults + totalChildren
     setTotalGuests(total)
-    console.log(totalAdults, "+", totalChildren, "=", total);
   }, [totalAdults, totalChildren, setTotalGuests])
 
   return (

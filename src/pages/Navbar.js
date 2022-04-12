@@ -2,7 +2,7 @@ import { useRoom } from "../context/roomContext";
 import SearchPage from '../pages/SearchPage'
 
 export default function Navbar() {
-  const { setOnPressedCity, setOnPressedGuests, onPressed, setOnPressed, isClicked, selectCity, totalGuests } = useRoom()
+  const { setOnPressedCity, setOnPressedGuests, onPressed, setOnPressed, isClicked, selectCity, totalGuests, setIsSearch, setFilterStays, filterGuests } = useRoom()
 
   const handleClickCity = () => {
     setOnPressed(true)
@@ -12,6 +12,11 @@ export default function Navbar() {
   const handleClickGuest = () => {
     setOnPressed(true)
     setOnPressedGuests(true)
+  }
+
+  const handleClickSearch = () => {
+    setIsSearch(true)
+    setFilterStays(filterGuests().filter(data => data.maxGuests >= totalGuests))
   }
 
   return (
@@ -46,7 +51,7 @@ export default function Navbar() {
             }
           </button>
           <span className="material-icons text-orange-500 px-3">
-            <button className='font-normal'>
+            <button className='font-normal' onClick={handleClickSearch}>
               search
             </button>
           </span>
