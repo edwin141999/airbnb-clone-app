@@ -3,16 +3,10 @@ import { useRoom } from "../context/roomContext";
 
 export default function HomePage() {
 
-  const { location, setOnPressed, setOnPressedCity, setOnPressedGuests, isSearch, filterStays } = useRoom();
-
-  const handleClick = () => {
-    setOnPressed(false)
-    setOnPressedCity(false)
-    setOnPressedGuests(false)
-  }
+  const { location, isSearch, filterStays } = useRoom();
 
   return (
-    <div className='px-3 md:px-16' onClick={handleClick}>
+    <div className='px-3 md:px-16'>
       <div className="flex justify-between">
         <span className="sm:text-sm md:text-2xl font-bold">Stays in Finland</span>
         <span className="xl:mr-6 text-sm self-center">{isSearch ? filterStays.length : location.length} stays</span>

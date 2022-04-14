@@ -21,9 +21,11 @@ export const RoomProvider = ({ children }) => {
   const [totalChildren, setTotalChildren] = useState(0);
 
   useEffect(() => {
-    fetch('stays.json')
-      .then(res => res.json())
-      .then(data => setLocation(data))
+    setTimeout(() => {
+      fetch('stays.json')
+        .then(res => res.json())
+        .then(data => setLocation(data))
+    }, 500)
   }, [])
 
   const citys = () => {
@@ -40,7 +42,7 @@ export const RoomProvider = ({ children }) => {
   }
 
   return <roomContext.Provider value={
-    { location, setLocation, citys, onPressedCity, setOnPressedCity, onPressedGuests, setOnPressedGuests, onPressed, setOnPressed, selectCity, setSelectCity, isClicked, setIsClicked, totalGuests, setTotalGuests, maxGuests, filterGuests, isSearch, setIsSearch, totalAdults, setTotalAdults, totalChildren, setTotalChildren,filterStays, setFilterStays }
+    { location, setLocation, citys, onPressedCity, setOnPressedCity, onPressedGuests, setOnPressedGuests, onPressed, setOnPressed, selectCity, setSelectCity, isClicked, setIsClicked, totalGuests, setTotalGuests, maxGuests, filterGuests, isSearch, setIsSearch, totalAdults, setTotalAdults, totalChildren, setTotalChildren, filterStays, setFilterStays }
   }>
     {children}
   </roomContext.Provider>

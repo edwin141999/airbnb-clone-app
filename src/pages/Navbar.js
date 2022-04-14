@@ -25,7 +25,7 @@ export default function Navbar() {
     <>
       {
         onPressed ? (
-          <div className="fixed w-full">
+          <div className="fixed w-full inset-0 bg-gray-500 bg-opacity-50">
             <div className="shadow-lg bg-white">
               <SearchPage />
             </div>
