@@ -12,12 +12,12 @@ export default function HomePage() {
   }
 
   return (
-    <div className='px-16 ' onClick={handleClick}>
+    <div className='px-3 md:px-16' onClick={handleClick}>
       <div className="flex justify-between">
-        <span className="text-2xl font-bold">Stays in Finland</span>
+        <span className="sm:text-sm md:text-2xl font-bold">Stays in Finland</span>
         <span className="xl:mr-6 text-sm self-center">{isSearch ? filterStays.length : location.length} stays</span>
       </div>
-      <div className="grid grid-cols-3 gap-2">
+      <div className="flex flex-col items-center md:grid md:grid-cols-3 sm:grid sm:grid-cols-2 gap-2">
         {
           isSearch ? (
             filterStays.map((data) => {

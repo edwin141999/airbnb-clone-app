@@ -26,7 +26,7 @@ export default function Guests() {
   }, [totalAdults, totalChildren, setTotalGuests])
 
   return (
-    <div className='pt-10 pb-14 px-5'>
+    <div className='pt-10 pb-12 px-5'>
       <div className='pb-12'>
         <span className='text-xs flex flex-col'>
           <p className='text-sm'>Adults</p>
