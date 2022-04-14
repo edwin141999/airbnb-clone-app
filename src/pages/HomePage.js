@@ -27,7 +27,7 @@ export default function HomePage() {
         }
       </div>
       <div className="flex justify-center pt-16 pb-4">
-        <span className="text-sm text-gray-600">created by <button className="underline">edwin141999</button> - devChallenges.io</span>
+        <span className="text-sm text-gray-600">created by <a className="underline font-bold" href="https://devchallenges.io/portfolio/edwin141999">edwin141999</a> - devChallenges.io</span>
       </div>
     </div>
   )
